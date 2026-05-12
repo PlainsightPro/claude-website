@@ -361,6 +361,24 @@ code, pre { font-family: var(--font-mono); font-size: 0.875rem; }
 .nav__toggle.open span:nth-child(2) { opacity: 0; }
 .nav__toggle.open span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
 
+/* Nav over image backgrounds (white text at top, reverts on scroll) */
+.nav--over-image .nav__logo { color: var(--white); }
+.nav--over-image .nav__logo span { color: var(--terracotta); }
+.nav--over-image .nav__links a { color: rgba(255,255,255,0.9); }
+.nav--over-image .nav__links a:hover { color: var(--white); }
+.nav--over-image .nav__links a::after { background: var(--white); }
+.nav--over-image .nav__dropdown-trigger svg { stroke: rgba(255,255,255,0.9); }
+.nav--over-image .nav__toggle span { background: var(--white); }
+
+/* When scrolled (nav--visible), revert to dark text */
+.nav--over-image.nav--visible .nav__logo { color: var(--charcoal); }
+.nav--over-image.nav--visible .nav__logo span { color: var(--terracotta); }
+.nav--over-image.nav--visible .nav__links a { color: var(--charcoal); }
+.nav--over-image.nav--visible .nav__links a:hover { color: var(--terracotta); }
+.nav--over-image.nav--visible .nav__links a::after { background: var(--terracotta); }
+.nav--over-image.nav--visible .nav__dropdown-trigger svg { stroke: var(--charcoal); }
+.nav--over-image.nav--visible .nav__toggle span { background: var(--charcoal); }
+
 /* ---- Buttons ---- */
 .btn {
   display: inline-flex;
@@ -1571,7 +1589,7 @@ code, pre { font-family: var(--font-mono); font-size: 0.875rem; }
    -------------------------------------------------------------------------- */
 .image-strip {
   display: flex;
-  gap: 1.5rem;
+  gap: 0;
   overflow: hidden;
   padding: var(--space-lg) 0;
 }
@@ -1582,6 +1600,7 @@ code, pre { font-family: var(--font-mono); font-size: 0.875rem; }
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  margin-right: 1.5rem;
 }
 
 .image-strip__item img {

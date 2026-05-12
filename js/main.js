@@ -182,6 +182,12 @@
           link.classList.add('active');
         }
       });
+
+      // Auto-detect image background pages and add white nav
+      const hasImageBg = document.querySelector('.hero--cinematic, .page-header--image');
+      if (hasImageBg) {
+        nav.classList.add('nav--over-image');
+      }
     }
   };
 
@@ -719,10 +725,20 @@
   HC.imageStrip = {
     init() {
       document.querySelectorAll('.image-strip').forEach(strip => {
-        const clone = strip.innerHTML;
-        strip.innerHTML += clone;
+        const items = Array.from(strip.children);
+        const itemCount = items.length;
 
-        const totalWidth = strip.scrollWidth / 2;
+        items.forEach(item => {
+          const clone = item.cloneNode(true);
+          strip.appendChild(clone);
+        });
+
+        let totalWidth = 0;
+        for (let i = 0; i < itemCount; i++) {
+          const item = strip.children[i];
+          totalWidth += item.offsetWidth + parseFloat(getComputedStyle(item).marginRight);
+        }
+
         gsap.to(strip, {
           x: -totalWidth,
           duration: 40,
