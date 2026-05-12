@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — HeyClaude</title>
+  <meta name="description" content="Start your AI journey with HeyClaude. Book a call or get in touch to discuss how Claude can transform your organization.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>H</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Hey<span>Claude</span></a>
+      <div class="nav__links">
+        <div class="nav__dropdown">
+          <a href="#" class="nav__dropdown-trigger">Services <svg viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <div class="nav__dropdown-menu">
+            <a href="build.html">Build</a>
+            <a href="work.html">Work</a>
+            <a href="personal.html">Personal</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav__cta">Start your AI journey</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header section--cream">
+    <div class="container">
+      <div class="page-header__content fade-up">
+        <span class="section__label">Contact</span>
+        <h1>Start your <span class="text-accent">AI journey</span></h1>
+        <p>Whether you have a specific use case in mind or you're exploring what's possible &mdash; we'd love to hear from you.</p>
+      </div>
+    </div>
+    <div class="deco-circle deco-circle--terracotta" style="width:250px;height:250px;top:20%;right:-5%;"></div>
+  </section>
+
+  <!-- Contact Options -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="grid grid--2" style="align-items:start;gap:var(--space-2xl);">
+
+        <!-- Book a Call -->
+        <div class="fade-up">
+          <h2>Book a discovery call</h2>
+          <p style="margin:var(--space-sm) 0 var(--space-lg);color:#666;">The fastest way to get started. Pick a time that works, and we'll spend 30 minutes understanding your goals and exploring how Claude can help.</p>
+
+          <!-- Calendly Placeholder -->
+          <div style="background:var(--cream);border-radius:16px;padding:var(--space-xl);text-align:center;border:2px dashed rgba(45,45,45,0.12);">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#D4715E" stroke-width="2" style="margin-bottom:var(--space-md);">
+              <rect x="8" y="12" width="48" height="44" rx="4"/>
+              <path d="M8 24h48"/>
+              <path d="M20 8v8M44 8v8"/>
+              <circle cx="24" cy="36" r="3"/>
+              <circle cx="32" cy="36" r="3"/>
+              <circle cx="40" cy="36" r="3"/>
+              <circle cx="24" cy="44" r="3"/>
+              <circle cx="32" cy="44" r="3"/>
+            </svg>
+            <h3 style="margin-bottom:0.5rem;">Schedule your call</h3>
+            <p style="color:#888;font-size:0.95rem;margin-bottom:var(--space-md);">Calendly booking widget will appear here</p>
+            <a href="https://calendly.com/heyclaude" class="btn btn--primary" target="_blank" rel="noopener">Open scheduling page</a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="fade-up">
+          <h2>Or send us a message</h2>
+          <p style="margin:var(--space-sm) 0 var(--space-lg);color:#666;">Prefer to write? Tell us about your organization and what you're looking to achieve with AI. We'll get back to you within one business day.</p>
+
+          <form action="#" method="POST" style="background:var(--cream);border-radius:16px;padding:var(--space-lg);">
+            <div class="grid grid--2" style="gap:var(--space-sm);">
+              <div class="form-group">
+                <label for="first-name">First name</label>
+                <input type="text" id="first-name" name="first-name" placeholder="Jane" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last name</label>
+                <input type="text" id="last-name" name="last-name" placeholder="Smith" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Work email</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Acme Corp">
+            </div>
+            <div class="form-group">
+              <label for="interest">What are you interested in?</label>
+              <select id="interest" name="interest">
+                <option value="">Select an option...</option>
+                <option value="build">Build — AI solutions &amp; prototypes</option>
+                <option value="work">Work — Workflow integration</option>
+                <option value="personal">Personal — Training &amp; enablement</option>
+                <option value="multiple">Multiple services</option>
+                <option value="unsure">Not sure yet — help me explore</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell us more</label>
+              <textarea id="message" name="message" placeholder="What are you trying to achieve? Any specific use cases or challenges you're facing?"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">Send message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Info -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="grid grid--3 fade-up">
+        <div class="card" style="text-align:center;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#D4715E" stroke-width="2" stroke-linecap="round" style="margin:0 auto var(--space-sm);">
+            <path d="M6 14c0-5.5 4.5-10 10-10s10 4.5 10 10c0 7-10 14-10 14S6 21 6 14z"/>
+            <circle cx="16" cy="14" r="3"/>
+          </svg>
+          <h4 class="card__title">Based in Europe</h4>
+          <p class="card__text" style="margin:0 auto;">Serving clients globally with flexible scheduling across time zones.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#8BA88E" stroke-width="2" stroke-linecap="round" style="margin:0 auto var(--space-sm);">
+            <circle cx="16" cy="16" r="12"/>
+            <path d="M16 8v8l5 3"/>
+          </svg>
+          <h4 class="card__title">Quick response</h4>
+          <p class="card__text" style="margin:0 auto;">We respond to every inquiry within one business day. Usually faster.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#D97757" stroke-width="2" stroke-linecap="round" style="margin:0 auto var(--space-sm);">
+            <path d="M4 26V10a2 2 0 012-2h20a2 2 0 012 2v16"/>
+            <path d="M4 14l12 6 12-6"/>
+          </svg>
+          <h4 class="card__title">No commitment</h4>
+          <p class="card__text" style="margin:0 auto;">Discovery calls are free. We'll tell you honestly if we're the right fit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">Hey<span>Claude</span></div>
+          <p class="footer__desc">Your unfair AI advantage. We partner with organizations to convert AI ambition into tangible results through Claude adoption, training, and implementation.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+            <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Services</h4>
+          <div class="footer__links">
+            <a href="build.html">Build</a>
+            <a href="work.html">Work</a>
+            <a href="personal.html">Personal</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Company</h4>
+          <div class="footer__links">
+            <a href="about.html">About</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Legal</h4>
+          <div class="footer__links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 HeyClaude. All rights reserved.</span>
+        <span class="footer__badge">Powered by Claude, by Anthropic</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
