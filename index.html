@@ -7,8 +7,25 @@
   <meta name="description" content="HeyClaude partners with organizations to convert AI ambition into tangible advantage. From exploration through full adoption.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>H</text></svg>">
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
 </head>
 <body>
+
+  <!-- Loading Screen -->
+  <div class="loader">
+    <div class="loader__logo">Hey<span>Claude</span></div>
+    <div class="loader__bar"></div>
+  </div>
+
+  <!-- WebGL Background -->
+  <canvas id="webgl-canvas"></canvas>
 
   <!-- Navigation -->
   <nav class="nav">
@@ -27,7 +44,7 @@
         <a href="case-studies.html">Case Studies</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
-        <a href="contact.html" class="nav__cta">Start your AI journey</a>
+        <a href="contact.html" class="nav__cta magnetic">Start your AI journey</a>
       </div>
       <button class="nav__toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -36,57 +53,104 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero section--cream">
+  <section class="hero hero--cinematic section--cream">
+    <div class="hero__bg-image">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/strategy-webres-55.jpg" alt="" loading="eager">
+    </div>
     <div class="container">
-      <div class="hero__content fade-up">
+      <div class="hero__content">
         <div class="hero__tag">
           <svg viewBox="0 0 16 16" fill="none" stroke="#D4715E" stroke-width="1.5"><path d="M8 1v4M8 11v4M1 8h4M11 8h4M3 3l2.5 2.5M10.5 10.5L13 13M13 3l-2.5 2.5M5.5 10.5L3 13"/></svg>
           Official Claude Adoption Partner
         </div>
         <h1>Your unfair <span class="text-accent">AI advantage</span></h1>
-        <p>HeyClaude partners with organizations to convert AI ambition into tangible advantage &mdash; guiding teams from exploration through full adoption.</p>
+        <p class="hero__subtitle">HeyClaude partners with organizations to convert AI ambition into tangible advantage &mdash; guiding teams from exploration through full adoption.</p>
         <div class="hero__actions">
-          <a href="contact.html" class="btn btn--primary btn--lg">Start your AI journey</a>
-          <a href="about.html" class="btn btn--secondary btn--lg">Learn more</a>
+          <a href="contact.html" class="btn btn--primary btn--lg magnetic">Start your AI journey</a>
+          <a href="about.html" class="btn btn--secondary btn--lg magnetic">Learn more</a>
         </div>
       </div>
     </div>
 
-    <!-- Decorative -->
-    <div class="deco-circle deco-circle--terracotta" style="width:400px;height:400px;top:10%;right:-8%;"></div>
-    <div class="deco-circle deco-circle--sage" style="width:250px;height:250px;bottom:5%;right:15%;"></div>
-    <div class="deco-circle deco-circle--sand" style="width:180px;height:180px;top:30%;right:25%;"></div>
+    <!-- Floating shapes -->
+    <div class="hero__shape hero__shape--1" data-parallax="0.3"></div>
+    <div class="hero__shape hero__shape--2" data-parallax="0.2"></div>
+    <div class="hero__shape hero__shape--3" data-parallax="0.15"></div>
   </section>
+
+  <!-- Marquee -->
+  <div class="marquee">
+    <div class="marquee__inner">
+      <span class="marquee__item">AI Adoption <span class="dot"></span></span>
+      <span class="marquee__item">Claude Integration <span class="dot"></span></span>
+      <span class="marquee__item">Workflow Automation <span class="dot"></span></span>
+      <span class="marquee__item">Team Training <span class="dot"></span></span>
+      <span class="marquee__item">Custom Solutions <span class="dot"></span></span>
+      <span class="marquee__item">Prompt Engineering <span class="dot"></span></span>
+      <span class="marquee__item">Production Systems <span class="dot"></span></span>
+    </div>
+  </div>
+
+  <!-- Image Strip -->
+  <div class="image-strip" style="background:var(--charcoal);padding:var(--space-md) 0;">
+    <div class="image-strip__item">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/experts-team-1.jpg" alt="Team collaboration" loading="lazy">
+    </div>
+    <div class="image-strip__item">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-1.jpg" alt="Knowledge sharing" loading="lazy">
+    </div>
+    <div class="image-strip__item">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/projects-webres-88.jpg" alt="Project work" loading="lazy">
+    </div>
+    <div class="image-strip__item">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/scans-dashboard.jpg" alt="Dashboard analysis" loading="lazy">
+    </div>
+    <div class="image-strip__item">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/about-team-2.jpg" alt="Team outdoors" loading="lazy">
+    </div>
+    <div class="image-strip__item">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/strategy-webres-86.jpg" alt="Strategy session" loading="lazy">
+    </div>
+  </div>
 
   <!-- Services Overview -->
   <section class="section section--white">
     <div class="container">
-      <div class="section__header text-center fade-up">
+      <div class="section__header text-center reveal-up">
         <span class="section__label">What we do</span>
         <h2>Three ways we accelerate your AI adoption</h2>
         <p>Whether you need a production-ready AI solution, smarter workflows, or trained teams &mdash; we have you covered.</p>
       </div>
-      <div class="grid grid--3">
-        <a href="build.html" class="card fade-up" style="text-decoration:none;">
-          <div class="card__icon">
-            <svg viewBox="0 0 28 28" fill="none" stroke="#D4715E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="22" height="22" rx="3"/><path d="M9 13l3 3 7-7"/></svg>
+      <div class="grid grid--3 stagger-group">
+        <a href="build.html" class="photo-card" style="text-decoration:none;">
+          <div class="photo-card__img">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/scans-dashboard.jpg" alt="Build with AI" loading="lazy">
           </div>
-          <h3 class="card__title">Build</h3>
-          <p class="card__text">From proof-of-concept to production. We turn your AI ideas into working solutions that deliver real business value.</p>
+          <div class="photo-card__overlay"></div>
+          <div class="photo-card__content">
+            <h3>Build</h3>
+            <p>From proof-of-concept to production. We turn your AI ideas into working solutions that deliver real business value.</p>
+          </div>
         </a>
-        <a href="work.html" class="card fade-up" style="text-decoration:none;">
-          <div class="card__icon card__icon--sage">
-            <svg viewBox="0 0 28 28" fill="none" stroke="#8BA88E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="11"/><path d="M14 8v6l4 2"/></svg>
+        <a href="work.html" class="photo-card" style="text-decoration:none;">
+          <div class="photo-card__img">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/experts-team-1.jpg" alt="Work with AI" loading="lazy">
           </div>
-          <h3 class="card__title">Work</h3>
-          <p class="card__text">Embed Claude into your daily workflows. We help teams work smarter, not harder, with AI integrated where it matters most.</p>
+          <div class="photo-card__overlay"></div>
+          <div class="photo-card__content">
+            <h3>Work</h3>
+            <p>Embed Claude into your daily workflows. We help teams work smarter, not harder, with AI integrated where it matters most.</p>
+          </div>
         </a>
-        <a href="personal.html" class="card fade-up" style="text-decoration:none;">
-          <div class="card__icon card__icon--sand">
-            <svg viewBox="0 0 28 28" fill="none" stroke="#D97757" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14a5 5 0 100-10 5 5 0 000 10zM4 24a10 10 0 0120 0"/></svg>
+        <a href="personal.html" class="photo-card" style="text-decoration:none;">
+          <div class="photo-card__img">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-2.jpg" alt="Personal AI training" loading="lazy">
           </div>
-          <h3 class="card__title">Personal</h3>
-          <p class="card__text">Train individuals to get the most from Claude. Practical, hands-on sessions that build lasting AI fluency.</p>
+          <div class="photo-card__overlay"></div>
+          <div class="photo-card__content">
+            <h3>Personal</h3>
+            <p>Train individuals to get the most from Claude. Practical, hands-on sessions that build lasting AI fluency.</p>
+          </div>
         </a>
       </div>
     </div>
@@ -95,20 +159,23 @@
   <!-- Stats -->
   <section class="section section--cream">
     <div class="container">
-      <div class="stats fade-up">
-        <div>
+      <div class="stats reveal-up">
+        <div class="stat">
           <div class="stat__number">50+</div>
           <div class="stat__label">Organizations transformed</div>
+          <div class="stat__divider"></div>
         </div>
-        <div>
+        <div class="stat">
           <div class="stat__number">200+</div>
           <div class="stat__label">Professionals trained</div>
+          <div class="stat__divider"></div>
         </div>
-        <div>
+        <div class="stat">
           <div class="stat__number">40%</div>
           <div class="stat__label">Average productivity gain</div>
+          <div class="stat__divider"></div>
         </div>
-        <div>
+        <div class="stat">
           <div class="stat__number">8x</div>
           <div class="stat__label">Faster time-to-value</div>
         </div>
@@ -119,27 +186,27 @@
   <!-- Why HeyClaude -->
   <section class="section section--white">
     <div class="container">
-      <div class="grid grid--2" style="align-items: center;">
-        <div class="fade-up">
+      <div class="grid grid--2" style="align-items:center;">
+        <div class="reveal-left">
           <span class="section__label">Why HeyClaude</span>
           <h2>We don't just talk about AI. We make it work.</h2>
-          <p style="margin-top:var(--space-sm); margin-bottom:var(--space-lg);">Too many AI consultancies deliver decks. We deliver outcomes. As an official Claude adoption partner, we combine deep product expertise with hands-on implementation.</p>
+          <p class="text-lg" style="margin-top:var(--space-sm);margin-bottom:var(--space-lg);">Too many AI consultancies deliver decks. We deliver outcomes. As an official Claude adoption partner, we combine deep product expertise with hands-on implementation.</p>
           <div class="feature-list">
-            <div class="feature-item">
+            <div class="feature-item reveal-up">
               <div class="feature-item__number">1</div>
               <div>
                 <h4>Deep Claude Expertise</h4>
                 <p>We know Claude inside and out &mdash; capabilities, limitations, and where the real value lies for your business.</p>
               </div>
             </div>
-            <div class="feature-item">
+            <div class="feature-item reveal-up">
               <div class="feature-item__number">2</div>
               <div>
                 <h4>Outcome-Driven</h4>
                 <p>Every engagement has clear success metrics. If it doesn't move the needle, we don't do it.</p>
               </div>
             </div>
-            <div class="feature-item">
+            <div class="feature-item reveal-up">
               <div class="feature-item__number">3</div>
               <div>
                 <h4>End-to-End</h4>
@@ -148,26 +215,19 @@
             </div>
           </div>
         </div>
-        <div class="fade-up" style="position:relative;">
-          <div class="speech-bubble" style="max-width:420px; margin:0 auto;">
-            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
-              <div style="width:40px;height:40px;border-radius:50%;background:var(--blush);display:flex;align-items:center;justify-content:center;">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#D4715E" stroke-width="1.5"><path d="M10 2a8 8 0 018 8c0 4.4-3.6 8-8 8a8 8 0 01-8-8 8 8 0 018-8z"/><path d="M7 9h.01M13 9h.01M7 13c1 1 5 1 6 0"/></svg>
-              </div>
-              <span style="font-weight:600;font-size:0.9rem;">Claude</span>
-            </div>
-            <p style="font-size:0.95rem;color:#555;line-height:1.7;">I've analyzed your customer support data. Three quick wins: auto-categorize tickets to cut triage time by 60%, draft responses for the top 20 question types, and flag escalations before they happen.</p>
+        <div class="reveal-right" style="position:relative;">
+          <div class="glow-image">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/experts-how-we-work.jpg" alt="Consultants in discussion" loading="lazy" style="aspect-ratio:4/3;">
           </div>
-          <div class="deco-circle deco-circle--sage" style="width:120px;height:120px;top:-20px;right:-20px;"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonial -->
+  <!-- Testimonials -->
   <section class="section section--cream">
     <div class="container">
-      <div class="grid grid--2 fade-up">
+      <div class="grid grid--2 stagger-group">
         <div class="testimonial">
           <p class="testimonial__quote">HeyClaude didn't just show us what Claude could do &mdash; they rewired how our entire product team thinks about AI. Within six weeks, we shipped features we'd been stuck on for months.</p>
           <div class="testimonial__author">
@@ -192,12 +252,44 @@
     </div>
   </section>
 
+  <!-- Gallery Mosaic -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="section__header text-center reveal-up">
+        <span class="section__label">Our world</span>
+        <h2>Where the magic happens</h2>
+      </div>
+      <div class="gallery-mosaic">
+        <div class="gallery-mosaic__item gallery-mosaic__item--wide">
+          <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-4.jpg" alt="Knowledge event audience" loading="lazy">
+        </div>
+        <div class="gallery-mosaic__item gallery-mosaic__item--tall">
+          <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-1.jpg" alt="Speaker at event" loading="lazy">
+        </div>
+        <div class="gallery-mosaic__item gallery-mosaic__item--medium">
+          <img src="https://plainsightpro.github.io/brand-kit/assets/photos/projects-webres-15.jpg" alt="Through the window" loading="lazy">
+        </div>
+        <div class="gallery-mosaic__item gallery-mosaic__item--small">
+          <img src="https://plainsightpro.github.io/brand-kit/assets/photos/about-team-1.jpg" alt="Team fun" loading="lazy">
+        </div>
+        <div class="gallery-mosaic__item gallery-mosaic__item--small">
+          <img src="https://plainsightpro.github.io/brand-kit/assets/photos/projects-webres-180.jpg" alt="Kitchen chat" loading="lazy">
+        </div>
+        <div class="gallery-mosaic__item gallery-mosaic__item--full">
+          <img src="https://plainsightpro.github.io/brand-kit/assets/photos/jobs-culture.jpg" alt="Full team portrait" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="cta-band">
-    <div class="container fade-up">
+  <section class="cta-band img-section">
+    <div class="img-section__bg img-section__bg--dark" style="background-image:url('https://plainsightpro.github.io/brand-kit/assets/photos/events-img-5345.jpg');background-size:cover;background-position:center;"></div>
+    <div class="cta-band__glow"></div>
+    <div class="container reveal-up">
       <h2>Ready to turn AI ambition into advantage?</h2>
       <p>Let's talk about what Claude can do for your organization.</p>
-      <a href="contact.html" class="btn btn--outline-white btn--lg">Start your AI journey</a>
+      <a href="contact.html" class="btn btn--outline-white btn--lg magnetic">Start your AI journey</a>
     </div>
   </section>
 

@@ -7,6 +7,10 @@
   <meta name="description" content="Start your AI journey with HeyClaude. Book a call or get in touch to discuss how Claude can transform your organization.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>H</text></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
 </head>
 <body>
 
@@ -27,7 +31,7 @@
         <a href="case-studies.html">Case Studies</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
-        <a href="contact.html" class="nav__cta">Start your AI journey</a>
+        <a href="contact.html" class="nav__cta magnetic">Start your AI journey</a>
       </div>
       <button class="nav__toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -36,15 +40,17 @@
   </nav>
 
   <!-- Page Header -->
-  <section class="page-header section--cream">
+  <section class="page-header page-header--image section--cream" style="padding-top:calc(var(--nav-height) + var(--space-2xl));padding-bottom:var(--space-2xl);">
+    <div class="page-header__bg">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/experts-how-we-work.jpg" alt="" loading="eager">
+    </div>
     <div class="container">
-      <div class="page-header__content fade-up">
+      <div class="page-header__content reveal-up">
         <span class="section__label">Contact</span>
         <h1>Start your <span class="text-accent">AI journey</span></h1>
         <p>Whether you have a specific use case in mind or you're exploring what's possible &mdash; we'd love to hear from you.</p>
       </div>
     </div>
-    <div class="deco-circle deco-circle--terracotta" style="width:250px;height:250px;top:20%;right:-5%;"></div>
   </section>
 
   <!-- Contact Options -->
@@ -53,7 +59,7 @@
       <div class="grid grid--2" style="align-items:start;gap:var(--space-2xl);">
 
         <!-- Book a Call -->
-        <div class="fade-up">
+        <div class="reveal-left">
           <h2>Book a discovery call</h2>
           <p style="margin:var(--space-sm) 0 var(--space-lg);color:#666;">The fastest way to get started. Pick a time that works, and we'll spend 30 minutes understanding your goals and exploring how Claude can help.</p>
 
@@ -76,7 +82,7 @@
         </div>
 
         <!-- Contact Form -->
-        <div class="fade-up">
+        <div class="reveal-right">
           <h2>Or send us a message</h2>
           <p style="margin:var(--space-sm) 0 var(--space-lg);color:#666;">Prefer to write? Tell us about your organization and what you're looking to achieve with AI. We'll get back to you within one business day.</p>
 
@@ -124,7 +130,7 @@
   <!-- Quick Info -->
   <section class="section section--cream">
     <div class="container">
-      <div class="grid grid--3 fade-up">
+      <div class="grid grid--3 stagger-group">
         <div class="card" style="text-align:center;">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#D4715E" stroke-width="2" stroke-linecap="round" style="margin:0 auto var(--space-sm);">
             <path d="M6 14c0-5.5 4.5-10 10-10s10 4.5 10 10c0 7-10 14-10 14S6 21 6 14z"/>

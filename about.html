@@ -7,6 +7,10 @@
   <meta name="description" content="HeyClaude is a Claude adoption partner. We help organizations convert AI ambition into tangible advantage.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>H</text></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
 </head>
 <body>
 
@@ -27,7 +31,7 @@
         <a href="case-studies.html">Case Studies</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
-        <a href="contact.html" class="nav__cta">Start your AI journey</a>
+        <a href="contact.html" class="nav__cta magnetic">Start your AI journey</a>
       </div>
       <button class="nav__toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -36,30 +40,33 @@
   </nav>
 
   <!-- Page Header -->
-  <section class="page-header section--cream">
+  <section class="page-header page-header--image section--cream" style="padding-top:calc(var(--nav-height) + var(--space-2xl));padding-bottom:var(--space-2xl);">
+    <div class="page-header__bg">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/jobs-culture.jpg" alt="" loading="eager">
+    </div>
     <div class="container">
-      <div class="page-header__content fade-up">
+      <div class="page-header__content reveal-up">
         <span class="section__label">About</span>
         <h1>We exist to close the <span class="text-accent">AI adoption gap</span></h1>
         <p>HeyClaude is a Claude adoption partner. We help organizations move from AI curiosity to AI competence &mdash; and from competence to competitive advantage.</p>
       </div>
     </div>
-    <div class="deco-circle deco-circle--sage" style="width:350px;height:350px;top:10%;right:-8%;"></div>
   </section>
 
   <!-- Mission -->
   <section class="section section--white">
     <div class="container">
       <div class="grid grid--2" style="align-items:center;">
-        <div class="fade-up">
+        <div class="reveal-left">
           <span class="section__label">Our mission</span>
           <h2>Make AI work for everyone &mdash; not just the technical few</h2>
           <p style="margin:var(--space-sm) 0 var(--space-md);">AI has the potential to transform every role, every department, every organization. But right now, most of that potential sits untapped. The tools are there. The talent and ambition are there. What's missing is the bridge.</p>
           <p>That's us. We bridge the gap between what AI can do and what your organization actually does with it.</p>
         </div>
-        <div class="fade-up" style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=450&fit=crop" alt="Team collaborating in a modern workspace" style="border-radius:16px;box-shadow:var(--shadow-lg);width:100%;">
-          <div class="deco-circle deco-circle--terracotta" style="width:100px;height:100px;bottom:-20px;left:-20px;"></div>
+        <div class="reveal-right" style="position:relative;">
+          <div class="glow-image">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/about-team-2.jpg" alt="Team on boardwalk in coastal dunes" style="border-radius:16px;width:100%;aspect-ratio:4/3;" loading="lazy">
+          </div>
         </div>
       </div>
     </div>
@@ -68,12 +75,12 @@
   <!-- What We Are / Aren't -->
   <section class="section section--cream">
     <div class="container">
-      <div class="section__header text-center fade-up">
+      <div class="section__header text-center reveal-up">
         <span class="section__label">Who we are</span>
         <h2>Clear about what we do &mdash; and what we don't</h2>
       </div>
-      <div class="grid grid--2">
-        <div class="card fade-up" style="border-left:4px solid var(--sage);">
+      <div class="grid grid--2 stagger-group">
+        <div class="card" style="border-left:4px solid var(--sage);">
           <h3 class="card__title" style="color:var(--sage);">What we are</h3>
           <ul style="margin-top:var(--space-sm);">
             <li style="list-style:none;padding:0.5rem 0;font-size:0.95rem;display:flex;gap:0.75rem;align-items:flex-start;">
@@ -90,7 +97,7 @@
             </li>
           </ul>
         </div>
-        <div class="card fade-up" style="border-left:4px solid var(--terracotta);">
+        <div class="card" style="border-left:4px solid var(--terracotta);">
           <h3 class="card__title" style="color:var(--terracotta);">What we're not</h3>
           <ul style="margin-top:var(--space-sm);">
             <li style="list-style:none;padding:0.5rem 0;font-size:0.95rem;display:flex;gap:0.75rem;align-items:flex-start;">
@@ -118,26 +125,26 @@
   <!-- Values -->
   <section class="section section--white">
     <div class="container">
-      <div class="section__header text-center fade-up">
+      <div class="section__header text-center reveal-up">
         <span class="section__label">Our values</span>
         <h2>How we show up</h2>
       </div>
-      <div class="grid grid--3">
-        <div class="card fade-up" style="text-align:center;">
+      <div class="grid grid--3 stagger-group">
+        <div class="card" style="text-align:center;">
           <div style="font-size:2.5rem;margin-bottom:var(--space-sm);">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#D4715E" stroke-width="2" stroke-linecap="round"><path d="M24 8c-8 0-16 8-16 16s8 16 16 16 16-8 16-16-8-16-16-16z"/><path d="M18 24l4 4 8-8"/></svg>
           </div>
           <h4 class="card__title">Confident, not arrogant</h4>
           <p class="card__text" style="margin:0 auto;">We know what we're doing and we'll tell you straight. But we listen more than we talk, and we're always learning.</p>
         </div>
-        <div class="card fade-up" style="text-align:center;">
+        <div class="card" style="text-align:center;">
           <div style="font-size:2.5rem;margin-bottom:var(--space-sm);">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#8BA88E" stroke-width="2" stroke-linecap="round"><path d="M12 36V18a2 2 0 012-2h20a2 2 0 012 2v18"/><path d="M8 36h32"/><path d="M20 24h8M20 28h4"/></svg>
           </div>
           <h4 class="card__title">Plain-spoken, not dumbed down</h4>
           <p class="card__text" style="margin:0 auto;">We explain things clearly without hiding behind jargon. Complex ideas deserve clear language, not simple thinking.</p>
         </div>
-        <div class="card fade-up" style="text-align:center;">
+        <div class="card" style="text-align:center;">
           <div style="font-size:2.5rem;margin-bottom:var(--space-sm);">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#D97757" stroke-width="2" stroke-linecap="round"><path d="M10 38l8-8M14 38l8-8"/><path d="M24 14a6 6 0 100-12 6 6 0 000 12z"/><path d="M30 30l8 8M34 30l-8 8"/></svg>
           </div>
@@ -148,10 +155,33 @@
     </div>
   </section>
 
+  <!-- Team Gallery -->
+  <section class="img-section section" style="min-height:500px;display:flex;align-items:center;">
+    <div class="img-section__bg" style="background-image:url('https://plainsightpro.github.io/brand-kit/assets/photos/strategy-webres-55.jpg');background-size:cover;background-position:center;"></div>
+    <div class="container" style="text-align:center;">
+      <h2 style="color:#fff;margin-bottom:var(--space-sm);">Real people. Real expertise.</h2>
+      <p style="color:rgba(255,255,255,0.7);max-width:50ch;margin:0 auto var(--space-lg);">Every engagement is led by people who've been in the trenches with AI adoption.</p>
+      <div class="grid grid--3" style="gap:var(--space-md);">
+        <div class="glass-card reveal-up">
+          <h4>Deep practitioners</h4>
+          <p>Not theorists. We build and deploy AI every day.</p>
+        </div>
+        <div class="glass-card reveal-up">
+          <h4>Industry fluent</h4>
+          <p>We speak your language, whether it's legal, finance, or operations.</p>
+        </div>
+        <div class="glass-card reveal-up">
+          <h4>Always learning</h4>
+          <p>AI moves fast. We stay ahead so you don't have to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Claude Partnership -->
   <section class="section section--cream">
     <div class="container">
-      <div class="fade-up" style="max-width:700px;margin:0 auto;text-align:center;">
+      <div class="reveal-up" style="max-width:700px;margin:0 auto;text-align:center;">
         <span class="section__label">Partnership</span>
         <h2>Official Claude adoption partner</h2>
         <p style="margin:var(--space-sm) auto var(--space-md);text-align:center;">HeyClaude is a service provider built on deep expertise with Anthropic's Claude. We don't build AI &mdash; we help you get extraordinary value from the best AI already built.</p>
@@ -164,11 +194,13 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta-band">
-    <div class="container fade-up">
+  <section class="cta-band img-section">
+    <div class="img-section__bg img-section__bg--dark" style="background-image:url('https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-3.jpg');background-size:cover;background-position:center;"></div>
+    <div class="cta-band__glow"></div>
+    <div class="container reveal-up">
       <h2>Let's talk about your AI ambitions</h2>
       <p>Whether you're just starting or ready to scale, we'll meet you where you are.</p>
-      <a href="contact.html" class="btn btn--outline-white btn--lg">Start your AI journey</a>
+      <a href="contact.html" class="btn btn--outline-white btn--lg magnetic">Start your AI journey</a>
     </div>
   </section>
 

@@ -7,6 +7,10 @@
   <meta name="description" content="Train individuals to get the most from Claude. Practical, hands-on sessions that build lasting AI fluency.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>H</text></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
 </head>
 <body>
 
@@ -27,7 +31,7 @@
         <a href="case-studies.html">Case Studies</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
-        <a href="contact.html" class="nav__cta">Start your AI journey</a>
+        <a href="contact.html" class="nav__cta magnetic">Start your AI journey</a>
       </div>
       <button class="nav__toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -36,29 +40,30 @@
   </nav>
 
   <!-- Page Header -->
-  <section class="page-header section--cream">
+  <section class="page-header page-header--image section--cream" style="padding-top:calc(var(--nav-height) + var(--space-2xl));padding-bottom:var(--space-2xl);">
+    <div class="page-header__bg">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-2.jpg" alt="" loading="eager">
+    </div>
     <div class="container">
-      <div class="page-header__content fade-up">
+      <div class="page-header__content reveal-up">
         <span class="section__label">Personal</span>
         <h1>Build <span class="text-accent">AI fluency</span> that lasts</h1>
         <p>Practical, hands-on training that turns curious individuals into confident Claude power users &mdash; no technical background required.</p>
       </div>
     </div>
-    <div class="deco-circle deco-circle--sand" style="width:300px;height:300px;top:15%;right:-5%;background:var(--sand);"></div>
-    <div class="deco-circle deco-circle--terracotta" style="width:160px;height:160px;bottom:15%;right:15%;"></div>
   </section>
 
   <!-- Why Training Matters -->
   <section class="section section--white">
     <div class="container">
       <div class="grid grid--2" style="align-items:center;">
-        <div class="fade-up">
+        <div class="reveal-up">
           <span class="section__label">The gap</span>
           <h2>Most people use 10% of what Claude can do</h2>
           <p style="margin:var(--space-sm) 0 var(--space-md);">They ask simple questions and get simple answers. They don't know about structured prompting, iterative workflows, context management, or the dozens of techniques that separate a beginner from a power user.</p>
           <p>Our training closes that gap &mdash; fast.</p>
         </div>
-        <div class="fade-up">
+        <div class="reveal-up">
           <div style="max-width:400px;margin-left:auto;">
             <div class="card">
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-md);">
@@ -93,13 +98,13 @@
   <!-- Training Programs -->
   <section class="section section--cream">
     <div class="container">
-      <div class="section__header text-center fade-up">
+      <div class="section__header text-center reveal-up">
         <span class="section__label">Programs</span>
         <h2>Training that fits your team</h2>
         <p>Every program is customized to your industry, role, and current skill level. No generic workshops.</p>
       </div>
-      <div class="grid grid--3">
-        <div class="card fade-up">
+      <div class="grid grid--3 stagger-group">
+        <div class="card">
           <div class="card__icon">
             <svg viewBox="0 0 28 28" fill="none" stroke="#D4715E" stroke-width="2" stroke-linecap="round"><path d="M14 3L4 8v12l10 5 10-5V8z"/><path d="M14 15V3M14 15l10-5M14 15L4 10"/></svg>
           </div>
@@ -107,7 +112,7 @@
           <p class="card__text">Half-day session for AI newcomers. Learn the fundamentals of working with Claude: effective prompting, understanding outputs, and knowing when (and when not) to use AI.</p>
           <p style="font-size:0.85rem;color:var(--terracotta);font-weight:600;margin-top:var(--space-sm);">4 hours &middot; Up to 20 people</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <div class="card__icon card__icon--sage">
             <svg viewBox="0 0 28 28" fill="none" stroke="#8BA88E" stroke-width="2" stroke-linecap="round"><rect x="4" y="6" width="20" height="16" rx="2"/><path d="M10 14l3 3 5-5"/><path d="M4 10h20"/></svg>
           </div>
@@ -115,7 +120,7 @@
           <p class="card__text">Two-day intensive for teams ready to go deep. Role-specific use cases, advanced prompting, building personal workflows, and developing an AI-first mindset for your domain.</p>
           <p style="font-size:0.85rem;color:var(--sage);font-weight:600;margin-top:var(--space-sm);">2 days &middot; Up to 15 people</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <div class="card__icon card__icon--sand">
             <svg viewBox="0 0 28 28" fill="none" stroke="#D97757" stroke-width="2" stroke-linecap="round"><path d="M14 4a10 10 0 0110 10"/><path d="M14 4a6 6 0 016 6"/><path d="M14 4v2"/><circle cx="14" cy="14" r="2"/></svg>
           </div>
@@ -131,12 +136,12 @@
   <section class="section section--white">
     <div class="container">
       <div class="grid grid--2" style="align-items:start;">
-        <div class="fade-up">
+        <div class="reveal-up">
           <span class="section__label">Curriculum</span>
           <h2>What participants walk away with</h2>
           <p style="margin:var(--space-sm) 0 var(--space-lg);">These aren't theoretical lectures. Every session is hands-on, using real tasks from your actual work.</p>
         </div>
-        <div class="feature-list fade-up">
+        <div class="feature-list reveal-up">
           <div class="feature-item">
             <div class="feature-item__number">1</div>
             <div>
@@ -173,7 +178,7 @@
   <!-- Testimonial -->
   <section class="section section--cream">
     <div class="container">
-      <div class="testimonial fade-up" style="max-width:700px;margin:0 auto;">
+      <div class="testimonial reveal-up" style="max-width:700px;margin:0 auto;">
         <p class="testimonial__quote">I went from thinking AI was hype to using Claude for 2 hours every day. The training didn't just teach me prompts &mdash; it changed how I think about my work. I'm genuinely faster and the quality is better.</p>
         <div class="testimonial__author">
           <div class="testimonial__avatar">JL</div>
@@ -186,12 +191,35 @@
     </div>
   </section>
 
+  <!-- Training Gallery -->
+  <section class="section section--white" style="padding-top:0;padding-bottom:0;">
+    <div class="image-strip" style="background:var(--charcoal);padding:var(--space-md) 0;">
+      <div class="image-strip__item">
+        <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-1.jpg" alt="Speaker at event" loading="lazy">
+      </div>
+      <div class="image-strip__item">
+        <img src="https://plainsightpro.github.io/brand-kit/assets/photos/scans-ai.jpg" alt="Workshop" loading="lazy">
+      </div>
+      <div class="image-strip__item">
+        <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-4.jpg" alt="Audience" loading="lazy">
+      </div>
+      <div class="image-strip__item">
+        <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-3.jpg" alt="Panelists" loading="lazy">
+      </div>
+      <div class="image-strip__item">
+        <img src="https://plainsightpro.github.io/brand-kit/assets/photos/experts-team-2.jpg" alt="Presenting" loading="lazy">
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
-  <section class="cta-band">
-    <div class="container fade-up">
+  <section class="cta-band img-section">
+    <div class="img-section__bg img-section__bg--dark" style="background-image:url('https://plainsightpro.github.io/brand-kit/assets/photos/scans-ai.jpg');background-size:cover;background-position:center;"></div>
+    <div class="cta-band__glow"></div>
+    <div class="container reveal-up">
       <h2>Invest in your team's AI fluency</h2>
       <p>The organizations that train their people now will have an unfair advantage for years to come.</p>
-      <a href="contact.html" class="btn btn--outline-white btn--lg">Start your AI journey</a>
+      <a href="contact.html" class="btn btn--outline-white btn--lg magnetic">Start your AI journey</a>
     </div>
   </section>
 

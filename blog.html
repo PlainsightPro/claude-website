@@ -7,6 +7,10 @@
   <meta name="description" content="Insights on AI adoption, Claude tips, and practical guides for getting more from AI in your organization.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>H</text></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
 </head>
 <body>
 
@@ -27,7 +31,7 @@
         <a href="case-studies.html">Case Studies</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
-        <a href="contact.html" class="nav__cta">Start your AI journey</a>
+        <a href="contact.html" class="nav__cta magnetic">Start your AI journey</a>
       </div>
       <button class="nav__toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -36,25 +40,27 @@
   </nav>
 
   <!-- Page Header -->
-  <section class="page-header section--cream">
+  <section class="page-header page-header--image section--cream" style="padding-top:calc(var(--nav-height) + var(--space-2xl));padding-bottom:var(--space-2xl);">
+    <div class="page-header__bg">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-1.jpg" alt="" loading="eager">
+    </div>
     <div class="container">
-      <div class="page-header__content fade-up">
+      <div class="page-header__content reveal-up">
         <span class="section__label">Blog</span>
         <h1>Thoughts on <span class="text-accent">AI adoption</span></h1>
         <p>Practical insights, honest takes, and lessons learned from helping organizations make AI work.</p>
       </div>
     </div>
-    <div class="deco-circle deco-circle--sage" style="width:250px;height:250px;top:20%;right:-5%;"></div>
   </section>
 
   <!-- Blog Grid -->
   <section class="section section--white">
     <div class="container">
-      <div class="grid grid--3">
+      <div class="grid grid--3 stagger-group">
 
-        <a href="blog-roi-of-ai-training.html" class="blog-card fade-up" style="text-decoration:none;color:inherit;">
+        <a href="blog-roi-of-ai-training.html" class="blog-card" style="text-decoration:none;color:inherit;">
           <div class="blog-card__image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="Team in workshop session">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/scans-ai.jpg" alt="Team in workshop session">
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">Strategy</span>
@@ -64,9 +70,9 @@
           </div>
         </a>
 
-        <a href="blog-prompt-engineering-myth.html" class="blog-card fade-up" style="text-decoration:none;color:inherit;">
+        <a href="blog-prompt-engineering-myth.html" class="blog-card" style="text-decoration:none;color:inherit;">
           <div class="blog-card__image">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=300&fit=crop" alt="Person typing on laptop">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/projects-webres-15.jpg" alt="Person typing on laptop">
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">Guide</span>
@@ -76,9 +82,9 @@
           </div>
         </a>
 
-        <a href="blog-ai-adoption-mistakes.html" class="blog-card fade-up" style="text-decoration:none;color:inherit;">
+        <a href="blog-ai-adoption-mistakes.html" class="blog-card" style="text-decoration:none;color:inherit;">
           <div class="blog-card__image">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&h=300&fit=crop" alt="Business meeting with charts">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/experts-team-2.jpg" alt="Business meeting with charts">
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">Insights</span>
@@ -88,9 +94,9 @@
           </div>
         </a>
 
-        <a href="blog-claude-for-legal-teams.html" class="blog-card fade-up" style="text-decoration:none;color:inherit;">
+        <a href="blog-claude-for-legal-teams.html" class="blog-card" style="text-decoration:none;color:inherit;">
           <div class="blog-card__image">
-            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&h=300&fit=crop" alt="Legal documents on desk">
+            <img src="https://plainsightpro.github.io/brand-kit/assets/photos/strategy-webres-55.jpg" alt="Legal documents on desk">
           </div>
           <div class="blog-card__body">
             <span class="blog-card__tag">Use Cases</span>
@@ -105,11 +111,13 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta-band">
-    <div class="container fade-up">
+  <section class="cta-band img-section">
+    <div class="img-section__bg img-section__bg--dark" style="background-image:url('https://plainsightpro.github.io/brand-kit/assets/photos/events-knowledge-4.jpg');background-size:cover;background-position:center;"></div>
+    <div class="cta-band__glow"></div>
+    <div class="container reveal-up">
       <h2>Want to see what Claude can do for you?</h2>
       <p>Reading about AI is useful. Experiencing it is transformative.</p>
-      <a href="contact.html" class="btn btn--outline-white btn--lg">Start your AI journey</a>
+      <a href="contact.html" class="btn btn--outline-white btn--lg magnetic">Start your AI journey</a>
     </div>
   </section>
 

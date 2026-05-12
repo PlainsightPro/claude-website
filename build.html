@@ -7,6 +7,10 @@
   <meta name="description" content="From proof-of-concept to production. HeyClaude turns your AI ideas into working solutions that deliver real business value.">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='24' font-size='24'>H</text></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
 </head>
 <body>
 
@@ -27,7 +31,7 @@
         <a href="case-studies.html">Case Studies</a>
         <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
-        <a href="contact.html" class="nav__cta">Start your AI journey</a>
+        <a href="contact.html" class="nav__cta magnetic">Start your AI journey</a>
       </div>
       <button class="nav__toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -36,28 +40,29 @@
   </nav>
 
   <!-- Page Header -->
-  <section class="page-header section--cream">
+  <section class="page-header page-header--image section--cream" style="padding-top:calc(var(--nav-height) + var(--space-2xl));padding-bottom:var(--space-2xl);">
+    <div class="page-header__bg">
+      <img src="https://plainsightpro.github.io/brand-kit/assets/photos/scans-dashboard.jpg" alt="" loading="eager">
+    </div>
     <div class="container">
-      <div class="page-header__content fade-up">
+      <div class="page-header__content reveal-up">
         <span class="section__label">Build</span>
         <h1>From idea to <span class="text-accent">production</span></h1>
         <p>We take your AI ambitions and turn them into working solutions &mdash; proof-of-concepts that prove value and production systems that deliver it.</p>
       </div>
     </div>
-    <div class="deco-circle deco-circle--terracotta" style="width:300px;height:300px;top:15%;right:-5%;"></div>
-    <div class="deco-circle deco-circle--sand" style="width:180px;height:180px;bottom:10%;right:10%;"></div>
   </section>
 
   <!-- How it works -->
   <section class="section section--white">
     <div class="container">
       <div class="grid grid--2" style="align-items:center;">
-        <div class="fade-up">
+        <div class="reveal-left">
           <span class="section__label">How it works</span>
           <h2>A clear path from exploration to deployment</h2>
           <p style="margin:var(--space-sm) 0 var(--space-lg);">We don't disappear into a lab for months. Our build process is transparent, iterative, and designed to prove value fast.</p>
         </div>
-        <div class="fade-up">
+        <div class="reveal-right">
           <div class="speech-bubble" style="max-width:400px;margin-left:auto;">
             <p style="font-size:0.95rem;color:#555;font-style:italic;">"Show me it works in two weeks, then we'll invest in scaling it."</p>
             <p style="font-size:0.85rem;color:#999;margin-top:0.5rem;">&mdash; Every smart leader we work with</p>
@@ -70,33 +75,33 @@
   <!-- Process Steps -->
   <section class="section section--cream">
     <div class="container">
-      <div class="section__header text-center fade-up">
+      <div class="section__header text-center reveal-up">
         <span class="section__label">Our process</span>
         <h2>Four phases to production-ready AI</h2>
       </div>
-      <div class="grid grid--2">
-        <div class="card fade-up">
+      <div class="grid grid--2 stagger-group">
+        <div class="card">
           <div class="card__icon">
             <svg viewBox="0 0 28 28" fill="none" stroke="#D4715E" stroke-width="2" stroke-linecap="round"><circle cx="14" cy="14" r="4"/><path d="M14 4v3M14 21v3M4 14h3M21 14h3M7 7l2 2M19 19l2 2M7 21l2-2M19 7l2-2"/></svg>
           </div>
           <h3 class="card__title">1. Discover</h3>
           <p class="card__text">We map your workflows, identify the highest-impact AI opportunities, and select the use case with the best value-to-effort ratio. You walk away with a concrete implementation plan.</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <div class="card__icon card__icon--sage">
             <svg viewBox="0 0 28 28" fill="none" stroke="#8BA88E" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="20" height="20" rx="2"/><path d="M9 12l3 3 7-7"/></svg>
           </div>
           <h3 class="card__title">2. Prototype</h3>
           <p class="card__text">In 1&ndash;2 weeks, we build a working proof-of-concept. Real data, real results. Stakeholders can see and test it immediately &mdash; no hand-waving required.</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <div class="card__icon card__icon--sand">
             <svg viewBox="0 0 28 28" fill="none" stroke="#D97757" stroke-width="2" stroke-linecap="round"><path d="M4 14h20M4 8h20M4 20h20"/><circle cx="10" cy="14" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="14" cy="20" r="2"/></svg>
           </div>
           <h3 class="card__title">3. Refine</h3>
           <p class="card__text">We iterate based on feedback, harden edge cases, add guardrails, and optimize performance. The prototype evolves into something production-worthy.</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <div class="card__icon card__icon--lavender">
             <svg viewBox="0 0 28 28" fill="none" stroke="#9B8DB5" stroke-width="2" stroke-linecap="round"><path d="M14 4l8 4v8l-8 4-8-4V8z"/><path d="M14 12v8M14 12l8-4M14 12L6 8"/></svg>
           </div>
@@ -107,36 +112,50 @@
     </div>
   </section>
 
+  <!-- Visual Break -->
+  <section class="section section--white" style="padding:0;">
+    <div class="split-reveal reveal-scale">
+      <div class="split-reveal__image">
+        <img src="https://plainsightpro.github.io/brand-kit/assets/photos/strategy-webres-86.jpg" alt="Consultants at work" loading="lazy">
+      </div>
+      <div class="split-reveal__content" style="background:var(--charcoal);color:var(--cream);">
+        <span class="section__label" style="color:var(--terracotta);">Our approach</span>
+        <h3 style="color:var(--cream);margin-bottom:var(--space-sm);">We build with you, not for you</h3>
+        <p style="color:rgba(250,246,241,0.7);">Every prototype is developed collaboratively. Your team sees progress daily, gives feedback continuously, and owns the result completely.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- What we build -->
   <section class="section section--white">
     <div class="container">
-      <div class="section__header text-center fade-up">
+      <div class="section__header text-center reveal-up">
         <span class="section__label">What we build</span>
         <h2>Solutions that solve real problems</h2>
         <p>Every build starts with a business problem, not a technology wish list.</p>
       </div>
-      <div class="grid grid--3">
-        <div class="card fade-up">
+      <div class="grid grid--3 stagger-group">
+        <div class="card">
           <h4 class="card__title">Document Intelligence</h4>
           <p class="card__text">Extract, summarize, and act on information buried in contracts, reports, and correspondence. Turn hours of manual review into seconds.</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <h4 class="card__title">Customer Interactions</h4>
           <p class="card__text">Draft responses, triage requests, and route issues automatically. Your support team handles the complex cases while Claude handles the rest.</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <h4 class="card__title">Internal Tools</h4>
           <p class="card__text">Build AI-powered dashboards, search tools, and assistants that give your team superpowers &mdash; without changing the tools they already use.</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <h4 class="card__title">Content Generation</h4>
           <p class="card__text">Produce on-brand marketing copy, technical documentation, and reports at scale &mdash; with human review built into the workflow.</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <h4 class="card__title">Data Analysis</h4>
           <p class="card__text">Ask questions of your data in plain language. Claude finds patterns, generates insights, and surfaces anomalies that spreadsheets miss.</p>
         </div>
-        <div class="card fade-up">
+        <div class="card">
           <h4 class="card__title">Custom Integrations</h4>
           <p class="card__text">Connect Claude to your CRM, ERP, or proprietary systems through secure APIs. AI that works with your existing infrastructure, not against it.</p>
         </div>
@@ -145,11 +164,13 @@
   </section>
 
   <!-- CTA -->
-  <section class="cta-band">
-    <div class="container fade-up">
+  <section class="cta-band img-section">
+    <div class="img-section__bg img-section__bg--dark" style="background-image:url('https://plainsightpro.github.io/brand-kit/assets/photos/projects-webres-88.jpg');background-size:cover;background-position:center;"></div>
+    <div class="cta-band__glow"></div>
+    <div class="container reveal-up">
       <h2>Have a use case in mind?</h2>
       <p>Tell us what you're trying to solve. We'll tell you if Claude can do it &mdash; and how fast.</p>
-      <a href="contact.html" class="btn btn--outline-white btn--lg">Start your AI journey</a>
+      <a href="contact.html" class="btn btn--outline-white btn--lg magnetic">Start your AI journey</a>
     </div>
   </section>
 
