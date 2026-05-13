@@ -1,0 +1,15 @@
+# Local Claude Code workspace
+.claude/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Node (if/when added)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

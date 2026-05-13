@@ -363,26 +363,56 @@
     }
   };
 
-  // ---- Horizontal Scroll ----
+  // ---- Horizontal Scroll with 3D Depth ----
   HC.horizontalScroll = {
     init() {
+      if (window.innerWidth <= 768) return;
+
       document.querySelectorAll('.horizontal-section').forEach(section => {
         const track = section.querySelector('.horizontal-track');
         if (!track) return;
 
+        const cards = track.querySelectorAll('.horizontal-card');
         const distance = track.scrollWidth - section.offsetWidth;
+        if (distance <= 0) return;
 
-        gsap.to(track, {
+        const scrollTween = gsap.to(track, {
           x: -distance,
           ease: 'none',
           scrollTrigger: {
             trigger: section,
             start: 'top top',
-            end: () => `+=${distance}`,
+            end: () => `+=${distance * 1.5}`,
             pin: true,
             scrub: 1,
-            invalidateOnRefresh: true
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
           }
+        });
+
+        cards.forEach((card) => {
+          gsap.fromTo(card,
+            {
+              rotateY: 25,
+              z: -200,
+              opacity: 0.3,
+              transformPerspective: 1200,
+              transformOrigin: 'center center',
+            },
+            {
+              rotateY: 0,
+              z: 0,
+              opacity: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: card,
+                containerAnimation: scrollTween,
+                start: 'left 100%',
+                end: 'left 50%',
+                scrub: true,
+              }
+            }
+          );
         });
       });
     }
@@ -795,6 +825,7 @@
   HC.galleryMosaic = {
     init() {
       document.querySelectorAll('.gallery-mosaic').forEach(mosaic => {
+        if (mosaic.classList.contains('scatter-3d')) return;
         const items = mosaic.querySelectorAll('.gallery-mosaic__item');
         gsap.fromTo(items,
           { y: 60, opacity: 0, scale: 0.9 },
@@ -849,6 +880,432 @@
     }
   };
 
+  // ============================================
+  // 3D DEPTH SCROLL SYSTEM
+  // ============================================
+
+  // ---- Hero Depth Scroll ----
+  HC.heroDepth = {
+    init() {
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+
+      const content = hero.querySelector('.hero__content');
+      const bgImage = hero.querySelector('.hero__bg-image');
+
+      if (content) {
+        gsap.to(content, {
+          scale: 0.55,
+          y: -120,
+          opacity: 0,
+          filter: 'blur(12px)',
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom 15%',
+            scrub: 1.5,
+          }
+        });
+      }
+
+      if (bgImage) {
+        gsap.to(bgImage, {
+          scale: 1.6,
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          }
+        });
+      }
+
+      hero.querySelectorAll('.hero__shape').forEach((shape, i) => {
+        gsap.to(shape, {
+          scale: 6 + i * 3,
+          opacity: 0,
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: '60% top',
+            scrub: 1,
+          }
+        });
+      });
+    }
+  };
+
+  // ---- Space Transition ----
+  HC.spaceTransition = {
+    init() {
+      const section = document.querySelector('.space-transition');
+      if (!section) return;
+
+      const stars = section.querySelector('.space-transition__stars');
+      if (stars) {
+        gsap.fromTo(stars,
+          { scaleY: 1, opacity: 0.2 },
+          {
+            scaleY: 5,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1,
+            }
+          }
+        );
+      }
+    }
+  };
+
+  // ---- Section Perspective Tilt ----
+  HC.sectionTilt = {
+    init() {
+      document.querySelectorAll('.section-tilt').forEach(section => {
+        gsap.fromTo(section,
+          {
+            rotateX: -8,
+            transformPerspective: 1200,
+            transformOrigin: 'center bottom',
+          },
+          {
+            rotateX: 0,
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 90%',
+              end: 'top 40%',
+              scrub: 1,
+            }
+          }
+        );
+      });
+    }
+  };
+
+  // ---- 3D Card Reveal (Testimonials) ----
+  HC.card3DReveal = {
+    init() {
+      document.querySelectorAll('.card-3d-reveal').forEach(group => {
+        Array.from(group.children).forEach((card, i) => {
+          const rotY = i % 2 === 0 ? -40 : 40;
+
+          gsap.fromTo(card,
+            {
+              rotateY: rotY,
+              rotateX: 12,
+              scale: 0.7,
+              opacity: 0,
+              transformPerspective: 1200,
+            },
+            {
+              rotateY: 0,
+              rotateX: 0,
+              scale: 1,
+              opacity: 1,
+              duration: 1.5,
+              ease: 'expo.out',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 88%',
+                toggleActions: 'play none none none',
+              }
+            }
+          );
+        });
+      });
+    }
+  };
+
+  // ---- Gallery 3D Scatter Assembly ----
+  HC.scatter3D = {
+    init() {
+      document.querySelectorAll('.scatter-3d').forEach(container => {
+        const items = container.querySelectorAll('.gallery-mosaic__item');
+
+        items.forEach((item, i) => {
+          const angle = (i / items.length) * Math.PI * 2;
+          const radius = 150 + Math.random() * 250;
+          const rx = (Math.random() - 0.5) * 50;
+          const ry = (Math.random() - 0.5) * 50;
+          const rz = (Math.random() - 0.5) * 25;
+
+          gsap.fromTo(item,
+            {
+              x: Math.cos(angle) * radius,
+              y: Math.sin(angle) * radius * 0.6,
+              rotateX: rx,
+              rotateY: ry,
+              rotateZ: rz,
+              scale: 0.4,
+              opacity: 0,
+              transformPerspective: 1200,
+            },
+            {
+              x: 0,
+              y: 0,
+              rotateX: 0,
+              rotateY: 0,
+              rotateZ: 0,
+              scale: 1,
+              opacity: 1,
+              scrollTrigger: {
+                trigger: container,
+                start: `top ${90 - i * 4}%`,
+                end: `top ${45 - i * 4}%`,
+                scrub: 1.5,
+              }
+            }
+          );
+        });
+      });
+    }
+  };
+
+  // ---- Gallery Walk — 3D pinned scroll-walkthrough ----
+  HC.galleryWalk = {
+    init() {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (reduceMotion || isMobile) return;
+
+      document.querySelectorAll('.gallery-walk').forEach(walk => {
+        const pin = walk.querySelector('.gallery-walk__pin');
+        const scene = walk.querySelector('.gallery-walk__scene');
+        const items = Array.from(walk.querySelectorAll('.gallery-walk__item'));
+        const header = walk.querySelector('.gallery-walk__header');
+        const progressFill = walk.querySelector('.gallery-walk__progress-fill');
+        const progressLabel = walk.querySelector('.gallery-walk__progress-label');
+        if (!pin || !items.length) return;
+
+        // Each image swings through the camera plane from a slightly different
+        // angle so the user feels like they're literally walking past them.
+        const trajectories = [
+          { entryX:    0, entryY:  20, entryRotY:   0, exitX:     0, exitY: -120, exitRotY:   0  }, // dead-ahead
+          { entryX: -180, entryY:  60, entryRotY:  18, exitX: -1500, exitY: -160, exitRotY:  35  }, // left
+          { entryX:  180, entryY: -40, entryRotY: -18, exitX:  1500, exitY: -180, exitRotY: -35  }, // right
+          { entryX: -140, entryY:  70, entryRotY:  14, exitX: -1600, exitY: -120, exitRotY:  30  },
+          { entryX:  140, entryY: -50, entryRotY: -14, exitX:  1600, exitY: -140, exitRotY: -30  },
+          { entryX:    0, entryY:  10, entryRotY:   0, exitX:     0, exitY:  -60, exitRotY:   0  }, // arrival
+        ];
+
+        // Set initial state on every item (far in the distance, hidden).
+        items.forEach((item, i) => {
+          const t = trajectories[i % trajectories.length];
+          gsap.set(item, {
+            z: -3200,
+            x: t.entryX * 1.4,
+            y: t.entryY,
+            rotateY: t.entryRotY * 0.6,
+            opacity: 0,
+            scale: 1,
+            filter: 'blur(10px) brightness(0.35)',
+            transformPerspective: 1200,
+            transformOrigin: 'center center',
+          });
+        });
+
+        const tl = gsap.timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            trigger: walk,
+            start: 'top top',
+            end: 'bottom bottom',
+            pin: pin,
+            pinType: 'fixed',
+            anticipatePin: 1,
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+            onUpdate: (self) => {
+              const p = self.progress;
+              if (progressFill) progressFill.style.width = (p * 100).toFixed(1) + '%';
+              if (progressLabel) {
+                if (p < 0.08) progressLabel.textContent = 'Walking in';
+                else if (p > 0.9) progressLabel.textContent = 'Arrived';
+                else progressLabel.textContent = 'Deeper · ' + Math.round(p * 100) + '%';
+              }
+            }
+          }
+        });
+
+        // Header fades & retreats as the walk begins.
+        if (header) {
+          tl.fromTo(header,
+            { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' },
+            { opacity: 0, y: -60, scale: 0.92, filter: 'blur(6px)', duration: 0.1 },
+            0
+          );
+        }
+
+        // Each image: approach from the depths, focus, then sweep past the camera.
+        const stepDuration = 1;
+        const overlap = 0.55;
+        const step = stepDuration - overlap;
+
+        items.forEach((item, i) => {
+          const t = trajectories[i % trajectories.length];
+          const startTime = i * step;
+          const isFinal = item.classList.contains('gallery-walk__item--final');
+
+          // Approach — emerge from the depths, drift to centre, sharpen.
+          tl.to(item,
+            {
+              z: -200,
+              x: 0,
+              y: 0,
+              rotateY: 0,
+              opacity: 1,
+              filter: 'blur(0px) brightness(1)',
+              duration: stepDuration * 0.55,
+              ease: 'power2.out',
+            },
+            startTime
+          );
+
+          // The final picture (full team) stays put — you "arrive" inside it.
+          if (isFinal) {
+            tl.to(item,
+              {
+                z: 250,
+                duration: stepDuration * 0.45,
+                ease: 'power1.in',
+              },
+              startTime + stepDuration * 0.55
+            );
+            return;
+          }
+
+          // Pass-through — image surges past the camera and breaks to the side.
+          tl.to(item,
+            {
+              z: 900,
+              x: t.exitX,
+              y: t.exitY,
+              rotateY: t.exitRotY,
+              opacity: 0,
+              filter: 'blur(14px) brightness(1.4)',
+              duration: stepDuration * 0.45,
+              ease: 'power2.in',
+            },
+            startTime + stepDuration * 0.55
+          );
+        });
+
+        // Subtle camera-sway on the whole scene so it feels alive, not on rails.
+        gsap.to(scene, {
+          rotateZ: 0.6,
+          y: -8,
+          duration: 6,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+        });
+      });
+    }
+  };
+
+  // ---- Bar Stack Reveal ----
+  HC.barStack = {
+    init() {
+      document.querySelectorAll('.bar-stack').forEach(stack => {
+        const items = stack.querySelectorAll('.bar-stack__item');
+        if (!items.length) return;
+
+        // Staggered entrance: bars rise from below with a slight 3D tilt.
+        gsap.fromTo(items,
+          {
+            y: 90,
+            opacity: 0,
+            rotateX: 10,
+            transformPerspective: 1600,
+            transformOrigin: 'center top'
+          },
+          {
+            y: 0,
+            opacity: 1,
+            rotateX: 0,
+            duration: 1.1,
+            stagger: 0.18,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: stack,
+              start: 'top 85%',
+              once: true
+            }
+          }
+        );
+
+        // Subtle parallax on each bar's inset image while the section is on screen.
+        items.forEach(item => {
+          const img = item.querySelector('.bar-stack__visual img');
+          if (!img) return;
+          gsap.fromTo(img,
+            { yPercent: -4 },
+            {
+              yPercent: 4,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: item,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+              }
+            }
+          );
+        });
+      });
+    }
+  };
+
+  // ---- CTA Portal Zoom ----
+  HC.portalZoom = {
+    init() {
+      document.querySelectorAll('.portal-section').forEach(section => {
+        const content = section.querySelector('.container');
+        if (!content) return;
+
+        gsap.fromTo(content,
+          {
+            scale: 0.15,
+            opacity: 0,
+            rotateX: 45,
+            transformPerspective: 1200,
+            transformOrigin: 'center center',
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            rotateX: 0,
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 85%',
+              end: 'top 15%',
+              scrub: 1.2,
+            }
+          }
+        );
+
+        const glow = section.querySelector('.cta-band__glow');
+        if (glow) {
+          gsap.fromTo(glow,
+            { scale: 0.2, opacity: 0 },
+            {
+              scale: 2.5,
+              opacity: 0.7,
+              scrollTrigger: {
+                trigger: section,
+                start: 'top 80%',
+                end: 'top 10%',
+                scrub: 1,
+              }
+            }
+          );
+        }
+      });
+    }
+  };
+
   // ---- Initialize ----
   function init() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
@@ -881,6 +1338,16 @@
     HC.galleryMosaic.init();
     HC.noiseOverlay.init();
     HC.photoCardTilt.init();
+
+    // 3D Depth Scroll Effects
+    HC.heroDepth.init();
+    HC.spaceTransition.init();
+    HC.sectionTilt.init();
+    HC.card3DReveal.init();
+    HC.scatter3D.init();
+    HC.galleryWalk.init();
+    HC.portalZoom.init();
+    HC.barStack.init();
 
     if (!document.querySelector('.loader')) {
       HC.heroReveal();
